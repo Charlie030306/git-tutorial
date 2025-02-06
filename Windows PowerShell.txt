@@ -1,0 +1,644 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\mohan> cd P:\git
+PS P:\git> ls
+
+
+    Directory: P:\git
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        06-02-2025     10:56                src
+-a----        06-02-2025     10:48        2281316 git-github-reference.pdf
+
+
+PS P:\git> git init
+Initialized empty Git repository in P:/git/.git/
+PS P:\git> git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        git-github-reference.pdf
+        src/
+
+nothing added to commit but untracked files present (use "git add" to track)
+PS P:\git> git add
+Nothing specified, nothing added.
+hint: Maybe you wanted to say 'git add .'?
+hint: Disable this message with "git config advice.addEmptyPathspec false"
+PS P:\git> git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        config.js
+        git-github-reference.pdf
+        src/
+
+nothing added to commit but untracked files present (use "git add" to track)
+PS P:\git> git add .
+PS P:\git> git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   config.js
+        new file:   git-github-reference.pdf
+        new file:   src/index.js
+
+PS P:\git> git commit -m
+error: switch `m' requires a value
+PS P:\git> git commit -m "version 1"
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'mohan@MOHANKRISHNA.(none)')
+PS P:\git> git commit -m "Version 1"
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'mohan@MOHANKRISHNA.(none)')
+PS P:\git> git config --global user.email "charlieu030305@gmail.com"
+PS P:\git> git config --global user.name "Mohan Krishna"
+PS P:\git> git commit -m "Version 1"
+[master (root-commit) 397021f] Version 1
+ 3 files changed, 4 insertions(+)
+ create mode 100644 config.js
+ create mode 100644 git-github-reference.pdf
+ create mode 100644 src/index.js
+PS P:\git>   git config --global user.name "Mohan Krishna"
+PS P:\git> git config --global user.email "charlieu030305@gmail.com"
+PS P:\git> git log
+commit 397021f266f1ad2be3cc3fdc28caa2aadbf3c1b5 (HEAD -> master)
+Author: Mohan Krishna <charlieu030305@gmail.com>
+Date:   Thu Feb 6 11:06:04 2025 +0530
+
+    Version 1
+PS P:\git> git add .
+PS P:\git> git commit -m "Version 1" --amend
+[master 598c017] Version 1
+ Date: Thu Feb 6 11:06:04 2025 +0530
+ 4 files changed, 5 insertions(+)
+ create mode 100644 change.js
+ create mode 100644 config.js
+ create mode 100644 git-github-reference.pdf
+ create mode 100644 src/index.js
+PS P:\git> git log
+commit 598c0177092342b7d5903f3df6ddab2655fee6b2 (HEAD -> master)
+Author: Mohan Krishna <charlieu030305@gmail.com>
+Date:   Thu Feb 6 11:06:04 2025 +0530
+
+    Version 1
+PS P:\git> git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        src/config.js
+
+nothing added to commit but untracked files present (use "git add" to track)
+PS P:\git>  git reset .
+Unstaged changes after reset:
+M       src/index.js
+PS P:\git> git checkout --config.js
+error: unknown option `config.js'
+usage: git checkout [<options>] <branch>
+   or: git checkout [<options>] [<branch>] -- <file>...
+
+    -b <branch>           create and checkout a new branch
+    -B <branch>           create/reset and checkout a branch
+    -l                    create reflog for new branch
+    --[no-]guess          second guess 'git checkout <no-such-branch>' (default)
+    --[no-]overlay        use overlay mode (default)
+    -q, --[no-]quiet      suppress progress reporting
+    --[no-]recurse-submodules[=<checkout>]
+                          control recursive updating of submodules
+    --[no-]progress       force progress reporting
+    -m, --[no-]merge      perform a 3-way merge with the new branch
+    --[no-]conflict <style>
+                          conflict style (merge, diff3, or zdiff3)
+    -d, --[no-]detach     detach HEAD at named commit
+    -t, --[no-]track[=(direct|inherit)]
+                          set branch tracking configuration
+    -f, --[no-]force      force checkout (throw away local modifications)
+    --[no-]orphan <new-branch>
+                          new unborn branch
+    --[no-]overwrite-ignore
+                          update ignored files (default)
+    --[no-]ignore-other-worktrees
+                          do not check if another worktree is using this branch
+    -2, --ours            checkout our version for unmerged files
+    -3, --theirs          checkout their version for unmerged files
+    -p, --[no-]patch      select hunks interactively
+    --[no-]ignore-skip-worktree-bits
+                          do not limit pathspecs to sparse entries only
+    --[no-]pathspec-from-file <file>
+                          read pathspec from file
+    --[no-]pathspec-file-nul
+                          with --pathspec-from-file, pathspec elements are separated with NUL character
+
+PS P:\git> git checkout --.
+error: unknown option `.'
+usage: git checkout [<options>] <branch>
+   or: git checkout [<options>] [<branch>] -- <file>...
+
+    -b <branch>           create and checkout a new branch
+    -B <branch>           create/reset and checkout a branch
+    -l                    create reflog for new branch
+    --[no-]guess          second guess 'git checkout <no-such-branch>' (default)
+    --[no-]overlay        use overlay mode (default)
+    -q, --[no-]quiet      suppress progress reporting
+    --[no-]recurse-submodules[=<checkout>]
+                          control recursive updating of submodules
+    --[no-]progress       force progress reporting
+    -m, --[no-]merge      perform a 3-way merge with the new branch
+    --[no-]conflict <style>
+                          conflict style (merge, diff3, or zdiff3)
+    -d, --[no-]detach     detach HEAD at named commit
+    -t, --[no-]track[=(direct|inherit)]
+                          set branch tracking configuration
+    -f, --[no-]force      force checkout (throw away local modifications)
+    --[no-]orphan <new-branch>
+                          new unborn branch
+    --[no-]overwrite-ignore
+                          update ignored files (default)
+    --[no-]ignore-other-worktrees
+                          do not check if another worktree is using this branch
+    -2, --ours            checkout our version for unmerged files
+    -3, --theirs          checkout their version for unmerged files
+    -p, --[no-]patch      select hunks interactively
+    --[no-]ignore-skip-worktree-bits
+                          do not limit pathspecs to sparse entries only
+    --[no-]pathspec-from-file <file>
+                          read pathspec from file
+    --[no-]pathspec-file-nul
+                          with --pathspec-from-file, pathspec elements are separated with NUL character
+
+PS P:\git> git checkout --index.js
+error: unknown option `index.js'
+usage: git checkout [<options>] <branch>
+   or: git checkout [<options>] [<branch>] -- <file>...
+
+    -b <branch>           create and checkout a new branch
+    -B <branch>           create/reset and checkout a branch
+    -l                    create reflog for new branch
+    --[no-]guess          second guess 'git checkout <no-such-branch>' (default)
+    --[no-]overlay        use overlay mode (default)
+    -q, --[no-]quiet      suppress progress reporting
+    --[no-]recurse-submodules[=<checkout>]
+                          control recursive updating of submodules
+    --[no-]progress       force progress reporting
+    -m, --[no-]merge      perform a 3-way merge with the new branch
+    --[no-]conflict <style>
+                          conflict style (merge, diff3, or zdiff3)
+    -d, --[no-]detach     detach HEAD at named commit
+    -t, --[no-]track[=(direct|inherit)]
+                          set branch tracking configuration
+    -f, --[no-]force      force checkout (throw away local modifications)
+    --[no-]orphan <new-branch>
+                          new unborn branch
+    --[no-]overwrite-ignore
+                          update ignored files (default)
+    --[no-]ignore-other-worktrees
+                          do not check if another worktree is using this branch
+    -2, --ours            checkout our version for unmerged files
+    -3, --theirs          checkout their version for unmerged files
+    -p, --[no-]patch      select hunks interactively
+    --[no-]ignore-skip-worktree-bits
+                          do not limit pathspecs to sparse entries only
+    --[no-]pathspec-from-file <file>
+                          read pathspec from file
+    --[no-]pathspec-file-nul
+                          with --pathspec-from-file, pathspec elements are separated with NUL character
+
+PS P:\git> git add .
+PS P:\git> git commit -m "Version 2"
+[master acb4370] Version 2
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+PS P:\git> git add.
+git: 'add.' is not a git command. See 'git --help'.
+
+The most similar command is
+        add
+PS P:\git> git add .
+PS P:\git> git commit -m "Version 3"
+[master 14761cb] Version 3
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+PS P:\git> git log
+commit 14761cb914fb9b9bb34769464fb2db87d1985881 (HEAD -> master)
+Author: Mohan Krishna <charlieu030305@gmail.com>
+Date:   Thu Feb 6 11:24:58 2025 +0530
+
+    Version 3
+
+commit acb4370d02191d66549201d0674e3269128e353a
+Author: Mohan Krishna <charlieu030305@gmail.com>
+Date:   Thu Feb 6 11:24:22 2025 +0530
+
+    Version 2
+
+commit 598c0177092342b7d5903f3df6ddab2655fee6b2
+Author: Mohan Krishna <charlieu030305@gmail.com>
+Date:   Thu Feb 6 11:06:04 2025 +0530
+
+    Version 1
+PS P:\git> git checkout acb4370d02191d66549201d0674e3269128e353a
+Note: switching to 'acb4370d02191d66549201d0674e3269128e353a'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at acb4370 Version 2
+PS P:\git> git checkout 14761cb914fb9b9bb34769464fb2db87d1985881
+Previous HEAD position was acb4370 Version 2
+HEAD is now at 14761cb Version 3
+PS P:\git> git log
+commit 14761cb914fb9b9bb34769464fb2db87d1985881 (HEAD, master)
+Author: Mohan Krishna <charlieu030305@gmail.com>
+Date:   Thu Feb 6 11:24:58 2025 +0530
+
+    Version 3
+
+commit acb4370d02191d66549201d0674e3269128e353a
+Author: Mohan Krishna <charlieu030305@gmail.com>
+Date:   Thu Feb 6 11:24:22 2025 +0530
+
+    Version 2
+
+commit 598c0177092342b7d5903f3df6ddab2655fee6b2
+Author: Mohan Krishna <charlieu030305@gmail.com>
+Date:   Thu Feb 6 11:06:04 2025 +0530
+
+    Version 1
+PS P:\git> git checkout  14761cb914fb9b9bb34769464fb2db87d1985881
+HEAD is now at 14761cb Version 3
+PS P:\git> git log
+commit 14761cb914fb9b9bb34769464fb2db87d1985881 (HEAD, master)
+Author: Mohan Krishna <charlieu030305@gmail.com>
+Date:   Thu Feb 6 11:24:58 2025 +0530
+
+    Version 3
+
+commit acb4370d02191d66549201d0674e3269128e353a
+Author: Mohan Krishna <charlieu030305@gmail.com>
+Date:   Thu Feb 6 11:24:22 2025 +0530
+
+    Version 2
+
+commit 598c0177092342b7d5903f3df6ddab2655fee6b2
+Author: Mohan Krishna <charlieu030305@gmail.com>
+Date:   Thu Feb 6 11:06:04 2025 +0530
+
+    Version 1
+PS P:\git> git checkout acb4370d02191d66549201d0674e3269128e353a
+Previous HEAD position was 14761cb Version 3
+HEAD is now at acb4370 Version 2
+PS P:\git> git log
+commit acb4370d02191d66549201d0674e3269128e353a (HEAD)
+Author: Mohan Krishna <charlieu030305@gmail.com>
+Date:   Thu Feb 6 11:24:22 2025 +0530
+
+    Version 2
+
+commit 598c0177092342b7d5903f3df6ddab2655fee6b2
+Author: Mohan Krishna <charlieu030305@gmail.com>
+Date:   Thu Feb 6 11:06:04 2025 +0530
+
+    Version 1
+PS P:\git> git log --all
+commit 14761cb914fb9b9bb34769464fb2db87d1985881 (master)
+Author: Mohan Krishna <charlieu030305@gmail.com>
+Date:   Thu Feb 6 11:24:58 2025 +0530
+
+    Version 3
+
+commit acb4370d02191d66549201d0674e3269128e353a (HEAD)
+Author: Mohan Krishna <charlieu030305@gmail.com>
+Date:   Thu Feb 6 11:24:22 2025 +0530
+
+    Version 2
+
+commit 598c0177092342b7d5903f3df6ddab2655fee6b2
+Author: Mohan Krishna <charlieu030305@gmail.com>
+Date:   Thu Feb 6 11:06:04 2025 +0530
+
+    Version 1
+PS P:\git> git checkout 598c0177092342b7d5903f3df6ddab2655fee6b2
+Previous HEAD position was acb4370 Version 2
+HEAD is now at 598c017 Version 1
+PS P:\git> git log --all
+commit 14761cb914fb9b9bb34769464fb2db87d1985881 (master)
+Author: Mohan Krishna <charlieu030305@gmail.com>
+Date:   Thu Feb 6 11:24:58 2025 +0530
+
+    Version 3
+
+commit acb4370d02191d66549201d0674e3269128e353a
+Author: Mohan Krishna <charlieu030305@gmail.com>
+Date:   Thu Feb 6 11:24:22 2025 +0530
+
+    Version 2
+
+commit 598c0177092342b7d5903f3df6ddab2655fee6b2 (HEAD)
+Author: Mohan Krishna <charlieu030305@gmail.com>
+Date:   Thu Feb 6 11:06:04 2025 +0530
+
+    Version 1
+PS P:\git> git add.
+git: 'add.' is not a git command. See 'git --help'.
+
+The most similar command is
+        add
+PS P:\git> git add .
+PS P:\git> git commit -m "Version 1 updated "
+[detached HEAD 78e7bdd] Version 1 updated
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+PS P:\git> git log --all
+commit 78e7bdd2dbb99648671774a4334d0d77a33695e4 (HEAD)
+Author: Mohan Krishna <charlieu030305@gmail.com>
+Date:   Thu Feb 6 11:32:16 2025 +0530
+
+    Version 1 updated
+
+commit 14761cb914fb9b9bb34769464fb2db87d1985881 (master)
+Author: Mohan Krishna <charlieu030305@gmail.com>
+Date:   Thu Feb 6 11:24:58 2025 +0530
+
+    Version 3
+
+commit acb4370d02191d66549201d0674e3269128e353a
+Author: Mohan Krishna <charlieu030305@gmail.com>
+Date:   Thu Feb 6 11:24:22 2025 +0530
+
+    Version 2
+
+commit 598c0177092342b7d5903f3df6ddab2655fee6b2
+Author: Mohan Krishna <charlieu030305@gmail.com>
+Date:   Thu Feb 6 11:06:04 2025 +0530
+
+    Version 1
+PS P:\git> q
+q : The term 'q' is not recognized as the name of a cmdlet, function,
+script file, or operable program. Check the spelling of the name, or if a
+path was included, verify that the path is correct and try again.
+At line:1 char:1
++ q
++ ~
+    + CategoryInfo          : ObjectNotFound: (q:String) [], CommandNotFou
+   ndException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS P:\git> git log -all --graph
+error: switch `l' expects a numerical value
+PS P:\git> git log -all --graph
+error: switch `l' expects a numerical value
+PS P:\git> git log --all
+commit 78e7bdd2dbb99648671774a4334d0d77a33695e4 (HEAD)
+Author: Mohan Krishna <charlieu030305@gmail.com>
+Date:   Thu Feb 6 11:32:16 2025 +0530
+
+    Version 1 updated
+
+commit 14761cb914fb9b9bb34769464fb2db87d1985881 (master)
+Author: Mohan Krishna <charlieu030305@gmail.com>
+Date:   Thu Feb 6 11:24:58 2025 +0530
+
+    Version 3
+
+commit acb4370d02191d66549201d0674e3269128e353a
+Author: Mohan Krishna <charlieu030305@gmail.com>
+Date:   Thu Feb 6 11:24:22 2025 +0530
+
+    Version 2
+
+commit 598c0177092342b7d5903f3df6ddab2655fee6b2
+Author: Mohan Krishna <charlieu030305@gmail.com>
+Date:   Thu Feb 6 11:06:04 2025 +0530
+
+    Version 1
+PS P:\git> git log
+commit 78e7bdd2dbb99648671774a4334d0d77a33695e4 (HEAD)
+Author: Mohan Krishna <charlieu030305@gmail.com>
+Date:   Thu Feb 6 11:32:16 2025 +0530
+
+    Version 1 updated
+
+commit 598c0177092342b7d5903f3df6ddab2655fee6b2
+Author: Mohan Krishna <charlieu030305@gmail.com>
+Date:   Thu Feb 6 11:06:04 2025 +0530
+
+    Version 1
+PS P:\git> git log --all --graph
+* commit 78e7bdd2dbb99648671774a4334d0d77a33695e4 (HEAD)
+| Author: Mohan Krishna <charlieu030305@gmail.com>
+| Date:   Thu Feb 6 11:32:16 2025 +0530
+|
+|     Version 1 updated
+|
+| * commit 14761cb914fb9b9bb34769464fb2db87d1985881 (master)
+| | Author: Mohan Krishna <charlieu030305@gmail.com>
+| | Date:   Thu Feb 6 11:24:58 2025 +0530
+| |
+| |     Version 3
+| |
+| * commit acb4370d02191d66549201d0674e3269128e353a
+|/  Author: Mohan Krishna <charlieu030305@gmail.com>
+|   Date:   Thu Feb 6 11:24:22 2025 +0530
+|
+|       Version 2
+|
+* commit 598c0177092342b7d5903f3df6ddab2655fee6b2
+  Author: Mohan Krishna <charlieu030305@gmail.com>
+  Date:   Thu Feb 6 11:06:04 2025 +0530
+
+      Version 1
+PS P:\git> git checkout master
+Warning: you are leaving 1 commit behind, not connected to
+any of your branches:
+
+  78e7bdd Version 1 updated
+
+If you want to keep it by creating a new branch, this may be a good time
+to do so with:
+
+ git branch <new-branch-name> 78e7bdd
+
+Switched to branch 'master'
+PS P:\git> git log --all -- graph
+PS P:\git> git log --all --graph
+* commit 14761cb914fb9b9bb34769464fb2db87d1985881 (HEAD -> master)
+| Author: Mohan Krishna <charlieu030305@gmail.com>
+| Date:   Thu Feb 6 11:24:58 2025 +0530
+|
+|     Version 3
+|
+* commit acb4370d02191d66549201d0674e3269128e353a
+| Author: Mohan Krishna <charlieu030305@gmail.com>
+| Date:   Thu Feb 6 11:24:22 2025 +0530
+|
+|     Version 2
+|
+* commit 598c0177092342b7d5903f3df6ddab2655fee6b2
+  Author: Mohan Krishna <charlieu030305@gmail.com>
+  Date:   Thu Feb 6 11:06:04 2025 +0530
+
+      Version 1
+PS P:\git> git checkout 598c0177092342b7d5903f3df6ddab2655fee6b2 index.js
+error: pathspec 'index.js' did not match any file(s) known to git
+PS P:\git> git checkout 598c0177092342b7d5903f3df6ddab2655fee6b2 .
+Updated 2 paths from 720f42c
+PS P:\git> git log --all --graph
+* commit 14761cb914fb9b9bb34769464fb2db87d1985881 (HEAD -> master)
+| Author: Mohan Krishna <charlieu030305@gmail.com>
+| Date:   Thu Feb 6 11:24:58 2025 +0530
+|
+|     Version 3
+|
+* commit acb4370d02191d66549201d0674e3269128e353a
+| Author: Mohan Krishna <charlieu030305@gmail.com>
+| Date:   Thu Feb 6 11:24:22 2025 +0530
+|
+|     Version 2
+|
+* commit 598c0177092342b7d5903f3df6ddab2655fee6b2
+  Author: Mohan Krishna <charlieu030305@gmail.com>
+  Date:   Thu Feb 6 11:06:04 2025 +0530
+
+      Version 1
+PS P:\git> git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   config.js
+        modified:   src/index.js
+
+PS P:\git> gti commit -m "Version 1 restored"
+gti : The term 'gti' is not recognized as the name of a cmdlet, function,
+script file, or operable program. Check the spelling of the name, or if a
+path was included, verify that the path is correct and try again.
+At line:1 char:1
++ gti commit -m "Version 1 restored"
++ ~~~
+    + CategoryInfo          : ObjectNotFound: (gti:String) [], CommandNotF
+   oundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS P:\git> git commit -m "Version 1 restored"
+[master dbf7a42] Version 1 restored
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+PS P:\git> git log -all --graph
+error: switch `l' expects a numerical value
+PS P:\git> git log
+commit dbf7a4296f17abb1747c7f1a49a6a05d4c70b996 (HEAD -> master)
+Author: Mohan Krishna <charlieu030305@gmail.com>
+Date:   Thu Feb 6 11:39:51 2025 +0530
+
+    Version 1 restored
+
+commit 14761cb914fb9b9bb34769464fb2db87d1985881
+Author: Mohan Krishna <charlieu030305@gmail.com>
+Date:   Thu Feb 6 11:24:58 2025 +0530
+
+    Version 3
+
+commit acb4370d02191d66549201d0674e3269128e353a
+Author: Mohan Krishna <charlieu030305@gmail.com>
+Date:   Thu Feb 6 11:24:22 2025 +0530
+
+    Version 2
+
+commit 598c0177092342b7d5903f3df6ddab2655fee6b2
+Author: Mohan Krishna <charlieu030305@gmail.com>
+Date:   Thu Feb 6 11:06:04 2025 +0530
+
+    Version 1
+PS P:\git> git log --all --graph
+* commit dbf7a4296f17abb1747c7f1a49a6a05d4c70b996 (HEAD -> master)
+| Author: Mohan Krishna <charlieu030305@gmail.com>
+| Date:   Thu Feb 6 11:39:51 2025 +0530
+|
+|     Version 1 restored
+|
+* commit 14761cb914fb9b9bb34769464fb2db87d1985881
+| Author: Mohan Krishna <charlieu030305@gmail.com>
+| Date:   Thu Feb 6 11:24:58 2025 +0530
+|
+|     Version 3
+|
+* commit acb4370d02191d66549201d0674e3269128e353a
+| Author: Mohan Krishna <charlieu030305@gmail.com>
+| Date:   Thu Feb 6 11:24:22 2025 +0530
+|
+|     Version 2
+|
+* commit 598c0177092342b7d5903f3df6ddab2655fee6b2
+  Author: Mohan Krishna <charlieu030305@gmail.com>
+  Date:   Thu Feb 6 11:06:04 2025 +0530
+
+      Version 1
+PS P:\git>  git s
+git: 's' is not a git command. See 'git --help'.
+
+The most similar commands are
+        show
+        status
+        switch
+        lfs
+        svn
+PS P:\git> git config --global alias.s "status"
+PS P:\git> git s
+On branch master
+nothing to commit, working tree clean
+PS P:\git> git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .gitignore
+
+nothing added to commit but untracked files present (use "git add" to track)
+PS P:\git> git add .
+PS P:\git> git commit -m "Add git Ignore"
+[master 5736cff] Add git Ignore
+ 1 file changed, 1 insertion(+)
+ create mode 100644 .gitignore
+PS P:\git>
